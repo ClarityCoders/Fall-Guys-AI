@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-data = np.load("../data/training_data_Gate2.npy", allow_pickle=True)
-targets = np.load("../data/target_data_Gate2.npy", allow_pickle=True)
+data = np.load("../data/training_dataGC.npy", allow_pickle=True)
+targets = np.load("../data/target_dataGC.npy", allow_pickle=True)
 
 print(f'Image Data Shape: {data.shape}')
 print(f'targets Shape: {targets.shape}')
@@ -27,13 +27,13 @@ for data in holder_list:
     #print(data[1])
     if data[1] == 'W':
         count_up += 1
-        cv2.imwrite(f"E:/GateCrash/Nothing/g2-{count_up}.png", data[0]) 
+        cv2.imwrite(f"E:/GC/Nothing/H7-u{count_up}.png", data[0]) 
     elif data[1] == 'A':
         count_left += 1
-        cv2.imwrite(f"E:/GateCrash/Left/g2-l{count_left}.png", data[0]) 
+        cv2.imwrite(f"E:/GC/Left/H7-l{count_left}.png", data[0]) 
     elif data[1] == 'D':
         count_right += 1
-        cv2.imwrite(f"E:/GateCrash/Right/g2-r{count_right}.png", data[0]) 
+        cv2.imwrite(f"E:/GC/Right/H7-r{count_right}.png", data[0]) 
     elif data[1] == ' ':
         count_jump += 1
-        cv2.imwrite(f"E:/GateCrash/Jump/g2-j{count_jump}.png", data[0]) 
+        cv2.imwrite(f"E:/GC/Jump/H7-j{count_jump}.png", data[0]) 

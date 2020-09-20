@@ -11,7 +11,7 @@ from utils.directkeys import PressKey, ReleaseKey, W, D, A
 from fastai.vision.all import *
 
 def label_func(x): return x.parent.name
-learn_inf = load_learner("export.pkl")
+learn_inf = load_learner("C:/Users/programmer/Desktop/FallGuys/DD.pkl")
 print("loaded learner")
 
 # Sleep time after actions
@@ -36,8 +36,8 @@ while True:
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     image = cv2.Canny(image, threshold1=200, threshold2=300)
     image = cv2.resize(image,(224,224))
-    cv2.imshow("Fall", image)
-    cv2.waitKey(1)
+    # cv2.imshow("Fall", image)
+    # cv2.waitKey(1)
     start_time = time.time()
     action = learn_inf.predict(image)[0]
 

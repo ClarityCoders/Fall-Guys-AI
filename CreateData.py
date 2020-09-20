@@ -7,8 +7,21 @@ from utils.grabscreen import grab_screen
 from utils.getkeys import key_check
 
 
-file_name = "data/training_data.npy"
-file_name2 = "data/target_data.npy"
+file_name = "C:/Users/programmer/Desktop/FallGuys/data/training_data.npy"
+file_name2 = "C:/Users/programmer/Desktop/FallGuys/data/target_data.npy"
+
+
+def auto_canny(image, sigma=0.33):
+    # compute the median of the single channel pixel intensities
+    v = np.median(image)
+    # apply automatic Canny edge detection using the computed median
+    lower = int(max(0, (1.0 - sigma) * v))
+    print(lower)
+    upper = int(min(255, (1.0 + sigma) * v))
+    print(upper)
+    edged = cv2.Canny(image, lower, upper)
+    # return the edged image
+    return edged
 
 
 def get_data():
@@ -32,19 +45,31 @@ def save_data(image_data, targets):
 image_data, targets = get_data()
 while True:
     keys = key_check()
-    print("waiting press r to run")
+    print("waiting press B to start")
     if keys == "B":
         print("Starting")
         break
 
-while True:
-    last_time = time.time()
 
+count = 0
+while True:
+    count +=1
+    last_time = time.time()
     # Grab Image GrayScale
     image = grab_screen(region=(50, 100, 799, 449))
+    #cv2.imwrite(f"E:/examples/Full{count}.png", image)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    image = cv2.Canny(image, threshold1=200, threshold2=300)
-    image = cv2.resize(image,(224,224))
+    #cv2.imwrite(f"E:/examples/gray{count}.png", image)
+    
+    #GRAY = image
+    image = cv2.Canny(image, threshold1=119, threshold2=250)
+    #cv2.imwrite(f"E:/examples/Lines{count}.png", image)
+    
+    # image = auto_canny(GRAY)
+    # cv2.imwrite(f"E:/examples/LineAUTO{count}.png", image)
+
+    image = cv2.resize(image, (224, 224))
+    #cv2.imwrite(f"E:/examples/resize{count}.png", image)
 
     # Debug line to show image
     # cv2.imshow("AI Peak", image)
