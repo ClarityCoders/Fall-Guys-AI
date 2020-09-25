@@ -11,19 +11,6 @@ file_name = "C:/Users/programmer/Desktop/FallGuys/data/training_data.npy"
 file_name2 = "C:/Users/programmer/Desktop/FallGuys/data/target_data.npy"
 
 
-def auto_canny(image, sigma=0.33):
-    # compute the median of the single channel pixel intensities
-    v = np.median(image)
-    # apply automatic Canny edge detection using the computed median
-    lower = int(max(0, (1.0 - sigma) * v))
-    print(lower)
-    upper = int(min(255, (1.0 + sigma) * v))
-    print(upper)
-    edged = cv2.Canny(image, lower, upper)
-    # return the edged image
-    return edged
-
-
 def get_data():
 
     if os.path.isfile(file_name):
