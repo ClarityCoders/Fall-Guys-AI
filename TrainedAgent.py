@@ -11,7 +11,7 @@ from utils.directkeys import PressKey, ReleaseKey, W, D, A
 from fastai.vision.all import *
 
 def label_func(x): return x.parent.name
-learn_inf = load_learner("C:/Users/programmer/Desktop/FallGuys/DD.pkl")
+learn_inf = load_learner("C:/Users/programmer/Desktop/FallGuys/GC.pkl")
 print("loaded learner")
 
 # Sleep time after actions
@@ -39,12 +39,19 @@ while True:
     # cv2.imshow("Fall", image)
     # cv2.waitKey(1)
     start_time = time.time()
-    action = learn_inf.predict(image)[0]
-
-    #print(action[0])
+    result = learn_inf.predict(image)
+    action = result[0]
+    #print(result[2][0].item(), result[2][1].item(), result[2][2].item(), result[2][3].item())
 
     #action = random.randint(0,3)
     
+    if action == "Jump" or result[2][0]>.1:
+        print(f"JUMP! - {result[1]}")
+        keyboard.press("space")
+        keyboard.release("a")
+        keyboard.release("d")
+        time.sleep(sleepy)
+
     if action == "Nothing":
         #print("Doing nothing....")
         keyboard.release("a")
@@ -53,25 +60,19 @@ while True:
         time.sleep(sleepy)
 
     elif action == "Left":
-        print("Going left....")
+        print(f"LEFT! - {result[1]}")
         keyboard.press("a")
         keyboard.release("d")
         keyboard.release("space")
         time.sleep(sleepy)
 
     elif action == "Right":
-        print("Going right....")
+        print(f"Right! - {result[1]}")
         keyboard.press("d")
         keyboard.release("a")
         keyboard.release("space")
         time.sleep(sleepy)
 
-    elif action == "Jump":
-        print("JUMP!")
-        keyboard.press("space")
-        keyboard.release("a")
-        keyboard.release("d")
-        time.sleep(sleepy)
 
     # End simulation by hitting h
     keys = key_check()

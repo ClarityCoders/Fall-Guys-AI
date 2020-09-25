@@ -55,25 +55,16 @@ count = 0
 while True:
     count +=1
     last_time = time.time()
-    # Grab Image GrayScale
     image = grab_screen(region=(50, 100, 799, 449))
-    #cv2.imwrite(f"E:/examples/Full{count}.png", image)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    #cv2.imwrite(f"E:/examples/gray{count}.png", image)
-    
-    #GRAY = image
+
     image = cv2.Canny(image, threshold1=119, threshold2=250)
-    #cv2.imwrite(f"E:/examples/Lines{count}.png", image)
-    
-    # image = auto_canny(GRAY)
-    # cv2.imwrite(f"E:/examples/LineAUTO{count}.png", image)
 
     image = cv2.resize(image, (224, 224))
-    #cv2.imwrite(f"E:/examples/resize{count}.png", image)
 
     # Debug line to show image
-    # cv2.imshow("AI Peak", image)
-    # cv2.waitKey(1)
+    cv2.imshow("AI Peak", image)
+    cv2.waitKey(1)
 
     # Convert to numpy array
     image = np.array(image)
