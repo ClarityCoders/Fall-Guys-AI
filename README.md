@@ -10,11 +10,20 @@
 - Once the episode ( Round ) ends pressing h will stop the screen / key grab process and all data will be moved to a numpy array.
 - Then I used a script in util folder called CreateImages.py to put then onto a disk drive in folders corresponding to their actions.
 
+## Train
+- Use the file called training.py
+- Point it at your image directory
+
+## Run Agents
+- Fully random agent is RandomAgent.py
+- Trained Agent is TrainedAgent.py
+- You will have to load in the pkl created from training.
 
 ## Inputs (Observations)
 - Uses inputs to the nural network (Observations) of pixes in the game.
 - 224 X 224
 - Line detection
 
+## Contact!
 - YouTube <a href="https://www.youtube.com/claritycoders" target="_blank">Clarity Coders</a>
 - Chat with me! <a href="https://discord.gg/cAWW5qq" target="_blank">Discord</a>
