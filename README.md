@@ -1,4 +1,4 @@
-<a href="https://www.youtube.com/claritycoders" target="_blank"><img src="https://i.imgur.com/sG7xxyc.png" title="Clarity Coders YouTube" /></a>
+<a href="https://youtu.be/GS_0ZKzrvk0" target="_blank"><img src="https://i.imgur.com/sG7xxyc.png" title="Clarity Coders YouTube" /></a>
 # Python / FastAI CNN - Playing Fall Guys
 > This code was used to gather and process data while playing the game Fall Guys.
 > The network was then trained using the FastAI Libary. 
